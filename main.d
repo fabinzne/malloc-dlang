@@ -1,5 +1,3 @@
-module malloc.main;
-
 import std.stdio;
 import core.stdc.stdlib;
 
@@ -28,6 +26,6 @@ void main()
     writeln("Connot allocate enough memory\n");
   }
 
-  printf("Memory size allocated = %X\n", required);
+  writefln("Memory size allocated = %X\n", required);
   free(mem);
 }
