@@ -6,8 +6,8 @@ enum int MINREQ = 0xFFF;
 void main()
 {
   uint required = int(-1);
-  void *mem = null;
-  while (mem == null)
+  void* mem = null;
+  while (mem is null)
   {
     writefln("Required %X\n", required);
     mem = malloc(required);
@@ -15,13 +15,15 @@ void main()
     {
       if (mem)
         free(mem);
-      writeln("Connot allocate enough memory\n");
+      import core.exception : onOutOfMemoryError;
+
+      onOutOfMemoryError();
     }
   }
 
   free(mem);
   mem = malloc(required);
-  if (mem == null)
+  if (mem is null)
   {
     writeln("Connot allocate enough memory\n");
   }
